@@ -304,7 +304,7 @@ async def check_death(ctx: SmsContext, previous_lives):
 
     try:
         current_lives = dme.read_word(dme.read_word(addresses.SMS_FLAGS_PTR) + addresses.LIVES_COUNT_OFFSET)
-        if (current_lives < previous_lives != 255) or (current_lives == 0 and previous_lives == 255):
+        if (current_lives < previous_lives != 4294967295) or (current_lives == 0 and previous_lives == 4294967295):
             if not ctx.has_send_death and time.time() >= ctx.last_death_link + 6: #prevent more double-deaths
                 ctx.has_send_death = True
                 player_name = ctx.player_names[ctx.slot] if ctx.slot in ctx.player_names else "Player"
